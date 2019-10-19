@@ -1,9 +1,387 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>tpunn</title>
-</head>
+<style>
+@import "https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,600,400|Montserrat:600|Material+Icons+Round|Material+Icons+Outlined";
+html, body {
+height: 100%;
+margin: 0;
+}
+body{background-color:#FAFAFA;}
+#app {
+height: 100%;
+}
+header {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+height: 84px;
+background-color: white;
+z-index: 8;
+box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+nav.left{float:left;}
+nav.right{float:right;}
+nav a {
+color: silver;
+text-decoration: none;
+font-size: 15px;
+font-family: "Montserrat", sans-serif;
+padding: 0 35px;
+line-height: 84px;
+display: inline-block;
+transition: all 0.3s;
+}
+nav:hover a {
+color: #636363;
+}
+nav a.active span {
+border-bottom: 1px solid rgba(239,83,80 ,1);
+color: #212121;
+}
+nav input {
+width: 300px;
+padding: 0 20px;
+height: 40px;
+border-radius: 5px;
+position: relative;
+top: 22px;
+margin-right: 20px;
+border: 2px solid silver;
+font-family: "Source Sans Pro", sans-serif;
+font-weight: 400;
+font-size: 17px;
+color: #424242;
+outline: none;
+transition: all 0.1s;
+background-color: #FAFAFA;
+}
+nav input:focus {
+border-color: #424242;
+}
+nav img {height:44px;position:relative;top:20px;margin: 0 50px;float:left;}
+.main {
+background: linear-gradient(to bottom right,rgba(229,115,115 ,1),rgba(183,28,28 ,1));
+height: 100%;
+position: relative;
+overflow: hidden;
+}
+nav a:hover {
+color: rgba(239,83,80 ,1);
+}
+.main h1 {
+font-size: 96px;
+color: rgba(255,255,255,0.5);
+font-family: "Source Sans Pro", sans-serif;
+font-weight: 700;
+position: absolute;
+bottom: 150px;
+margin: 0;
+left: 100px;
+}
+.main .bg {
+position: absolute;
+bottom: 0;
+left: 0;
+right: 0;
+height: 200px;
+}
+.main .bg div {
+border-radius: 50%;
+position: absolute;
+animation-duration: 5s;
+animation-iteration-count: infinite;
+}
+.main .bg div.bounce {
+animation-name: scale;
+}
+.main .bg div.float1 {
+animation-name: float1;
+}
+.main .bg div.float2 {
+animation-name: float2;
+}
+@keyframes scale {
+0% {
+transform: scale(1);
+}
+40% {
+transform: scale(1);
+}
+45% {
+transform: scale(0.8);
+}
+50% {
+transform: scale(1.4);
+}
+55% {
+transform: scale(0.8);
+}
+60% {
+transform: scale(1);
+}
+100% {
+transform: scale(1);
+}
+}
+@keyframes float1 {
+0% {
+transform: translateY(0px);
+}
+40% {
+transform: translateY(0px);
+}
+45% {
+transform: translateY(20px);
+}
+55% {
+transform: translateY(-20px);
+}
+60% {
+transform: translateY(0px);
+}
+100% {
+transform: translateY(0px);
+}
+}
+@keyframes float2 {
+0% {
+transform: translateY(0px);
+}
+40% {
+transform: translateY(0px);
+}
+45% {
+transform: translateY(-10px);
+}
+55% {
+transform: translateY(10px);
+}
+60% {
+transform: translateY(0px);
+}
+100% {
+transform: translateY(0px);
+}
+}
+h4 {
+font-size: 15px;
+font-family: "Montserrat", sans-serif;
+letter-spacing: 1px;
+border-bottom: 3px solid rgba(239,83,80 ,1);
+text-transform: uppercase;
+display: inline-block;
+}
+.container {
+display: flex;
+}
+.section {
+padding: 100px 100px 0 100px;
+float: left;
+width: 50%;
+box-sizing: border-box;
+}
+.image {
+float: left;
+width: 50%;
+background-size: cover;
+position: relative;
+background-attachment: fixed;
+}
+.image .label {
+position: absolute;
+top: 50px;
+right: 30px;
+color: white;
+font-family: 'Montserrat', sans-serif;
+font-size: 15px;
+text-align: right;
+}
+.image .label i {
+position: relative;
+top: 7px;
+margin-right: 10px;
+}
+h2 {
+font-family: "Source Sans Pro", sans-serif;
+font-weight: 700;
+font-size: 32px;
+margin-top: 0;
+color: #424242;
+}
+p {
+line-height: 25px;
+font-size: 17px;
+font-family: "Source Sans Pro", sans-serif;
+}
+button {
+min-width: 156px;
+padding: 0 30px;
+height: 56px;
+background-color: white;
+border: 0;
+border-radius: 5px;
+font-size: 20px;
+font-family: "Montserrat", sans-serif;
+text-transform: uppercase;
+letter-spacing: 2px;
+color: #636363;
+overflow: hidden;
+box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+cursor: pointer;
+transition: all 0.3s;
+}
+button.icon {
+padding-left: 0;
+}
+button.icon i.material-icon {
+height: 56px;
+background-color: rgba(239,83,80 ,1);
+padding: 0 16px;
+color: white;
+line-height: 56px;
+margin-right: 30px;
+transition: all 0.3s;
+}
+button.icon span {
+position: relative;
+top: -5px;
+}
+button.icon i.material-arrow {
+position: relative;
+top: 3px;
+font-size: 20px;
+left: 0;
+transition: left 0.3s;
+}
+button.icon:hover i.material-arrow {
+left: 10px;
+}
+button.icon:hover {
+background-color: rgba(239,83,80 ,1);
+color: white;
+}
+button.icon:hover i.material-icon {
+background-color: white;
+color: rgba(239,83,80 ,1);
+font-family: "Material Icons Round";
+}
+.pipe{font-weight:normal;}
+</style>
+
 <body>
-<h1>Hello world!</h1>
+<div id='app'>
+<header>
+<nav class='left'><img src='logo.png'/>
+<span><a href="#" class='active'><span>Home</span></span></a><span><a href="#">About</span></a><span><a href="#">Explore</span></a><span><a href="#">Contact</span></a></nav>
+<nav class='right'>
+<input placeholder='Search'/>
+</nav>
+</header>
+<div class='main'>
+<h1 v-html="name"></h1>
+<div class='bg'>
+<shape-circle xpos="100" ypos="135" radius="10" bg="rgba(255,235,59,0.8)"></shape-circle>
+<shape-circle xpos="150" ypos="170" radius="20" bg="rgba(38,198,218 ,0.8)"></shape-circle>
+<shape-circle xpos="225" ypos="180" radius="35" bg="rgba(149,117,205 ,0.8)"></shape-circle>
+<shape-circle xpos="310" ypos="180" radius="25" bg="rgba(240,98,146 ,0.8)"></shape-circle>
+<shape-circle xpos="400" ypos="185" radius="50" bg="rgba(0,188,212 ,0.8)"></shape-circle>
+<shape-circle xpos="480" ypos="130" radius="22" bg="rgba(149,117,205 ,0.8)"></shape-circle>
+<shape-circle xpos="540" ypos="135" radius="15" bg="rgba(0,188,212 ,0.8)"></shape-circle>
+<shape-circle xpos="580" ypos="130" radius="10" bg="rgba(255,235,59,0.8)"></shape-circle>
+<shape-circle xpos="650" ypos="160" radius="25" bg="rgba(240,98,146 ,0.8)"></shape-circle>
+<shape-circle xpos="750" ypos="200" radius="45" bg="rgba(0,188,212 ,0.8)"></shape-circle>
+<shape-circle xpos="875" ypos="160" radius="50" bg="rgba(255,235,59,0.8)"></shape-circle>
+<shape-circle xpos="1000" ypos="130" radius="25" bg="rgba(240,98,146 ,0.8)"></shape-circle>
+<shape-circle xpos="1100" ypos="120" radius="45" bg="rgba(0,188,212 ,0.8)"></shape-circle>
+</div>
+</div>
+<div class='container'>
+<div class='section'>
+<h4>Creative</h4>
+<h2>New ideas, creations, and thoughts frequently</h2>
+<p>I love seeing the word, sharing my words on my blog, and helping others learn what I know. You can check out my creations, adventures, and blogs here.</p>
+<br><p><button class='icon'>
+<i class='material-icon material-icons-outlined'>explore</i>
+<span>Explore <i class='material-arrow material-icons-round'>arrow_forward</i></span></button></p>
+</div>
+<div class='image' style='background-image:url("bg1.jpg");'>
+<span class='label'><i class='material-icons-outlined'>photo</i> Kerala, India</span>
+</div>
+</div>
+<div class='container'>
+<div class='section'>
+<h4>Cognizant</h4>
+<h2>I'm a high school freshman scholar engaging my knowledge to succeed</h2>
+<p>I enjoy learning new things, whether its memorizing new vocabulary or learning calculus. I strive to improve my brainpower when I can!</p>
+<br><p><button class='icon'>
+<i class='material-icon material-icons-outlined'>flare</i>
+<span>Achievements <i class='material-arrow material-icons-round'>arrow_forward</i></span></button></p>
+</div>
+<div class='image' style='background-image:url("bg2.jpg");'>
+<span class='label' style='padding:10px;background-color:rgba(0,0,0,0.7);border-radius:5px;'><i class='material-icons-outlined'>info</i> 3rd place in Seattle Regional Spelling<br>I level below the nationals in 4th grade!</span>
+</div>
+</div>
+<div class='container'>
+<div class='section'>
+<h4>Technological</h4>
+<h2>Web development and programming is my hobby!</h2>
+<p>I started building websites in 3rd grade, with Word and soon learned HTML/CSS to build more customized sites. I always preferred hand-coding sites because I'm an insanely fast typer, rather than using a CMS. Web design eventually led me into dissecting JavaScript, leading me into the world of programming: Python, Java, Robotics, and server side.</p>
+<br><p><button class='icon'>
+<i class='material-icon material-icons-outlined'>code</i>
+<span>My projects <i class='material-arrow material-icons-round'>arrow_forward</i></span></button></p>
+<br><br><br><br>
+</div>
+<div class='image' style='background-image:url("bg3.png");background-size:100%;background-repeat:no-repeat;background-color:rgba(239,83,80 ,1);background-attachment:initial;background-position:center;'>
+<span class='label'><i class='material-icons-outlined'>code</i> Hand-coded graphic of Madrid, Spain <br>in SVG for leadership class project</span>
+</div>
+</div>
+<footer>
+</footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+<script>
+Vue.component('shape-circle', {
+  data: function() {
+	return {
+	option: ["bounce","float1","float2","bounce"][Math.floor(Math.random()*4)]
+	}
+  },
+  props: ['radius','ypos','xpos','bg'],
+  template: `<div :class="option" :style="{animationDelay:Math.floor(Math.random()*10)/2+'s',width:radius*2+'px',height:radius*2+'px',top:ypos-radius/2+'px',left:xpos-radius/2+'px',backgroundColor:bg}"></div>`
+})
+let app = new Vue({ 
+el: '#app', 
+data: {
+txt: 'Tony Punnacherry',
+txt2: '',
+speed: 150,
+i: 0,
+pipe: true,
+},
+computed: {
+name() {return this.txt2.concat(this.pipe ? "<span class='pipe'>|</span>" : "")}
+},
+methods: {
+typeWriter() {
+  if (this.i < this.txt.length) {
+    this.txt2 += this.txt.charAt(this.i)
+    this.i++
+    setTimeout(this.typeWriter, this.txt.charAt(this.i)==" " ? 300 : this.speed)
+  } else {
+    this.i = 0
+  }
+}
+},
+mounted() {
+this.typeWriter()
+let t = this;
+setInterval(()=>{
+t.pipe = !t.pipe
+},500);
+}
+})
+</script>
 </body>
+
 </html>
