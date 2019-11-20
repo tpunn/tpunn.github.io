@@ -1,6 +1,6 @@
 # tpunn.github.io
 
-**Typewriter**
+**Typewriter method**
 
 - Initialize Vue Instance. Important data: finishing text, empty string, speed, character index, and if pipe should display at end (boolean).
 - Computed created created to return a pipe concatenated to the empty string. Uses ternary statement for quick condition. Unfortunately, can't use arrow functions inside Vue instance, but composition API in Vue 3 can change that.
