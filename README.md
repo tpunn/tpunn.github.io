@@ -5,7 +5,7 @@
 - Initialize Vue Instance. Important data: finishing text, empty string, speed, character index, and if pipe should display at end (boolean).
 - Computed created created to return a pipe concatenated to the empty string. Uses ternary statement for quick condition. Unfortunately, can't use arrow functions inside Vue instance, but composition API in Vue 3 can change that.
 - The only method we need is the initialization of the typewriter. The method uses recursion to post a new character to the empty string each time. Additionally, a mounted event is written too alternate the pipe boolean every 500 milliseconds.
-- WARNING: Use v-html to interpolate the name() computed to the <h1> because it uses html in the string, not plain text.
+- WARNING: Use v-html to interpolate the name() computed to the &lt;h1&gt; because it uses html in the string, not plain text.
 
 ```
 let app = new Vue({ 
